@@ -11,21 +11,24 @@ public class doggy : MonoBehaviour
     public LayerMask groundLayer; // lets us label things as ground. we want doggy only to jump when in contact with ground
     private bool isGround;
 
+    public GameObject badEndingScreen; // drag the rottenend panel here
+
     //Update called once per frame
     void Update()
     {
         direction = Input.GetAxisRaw("Horizontal"); // -1 is left, 1 is right
-        if(direction < 0)
+        if (direction < 0)
         {
             doggyRederer.flipX = true; // go into sprite renderer component and look for the thingy to flip it which is flipx
-        } else if (direction > 0)
+        }
+        else if (direction > 0)
         {
             doggyRederer.flipX = false;
         }
 
-        if (isGround==true && Input.GetButton("Jump")) //default jump in unity is space
+        if (isGround == true && Input.GetButton("Jump")) //default jump in unity is space
         {
-            dogRB.linearVelocity = Vector2.up * jumpForce; 
+            dogRB.linearVelocity = Vector2.up * jumpForce;
         }
     }
 
@@ -65,7 +68,19 @@ public class doggy : MonoBehaviour
         if (other.gameObject.CompareTag("Food")) // if player collide with object that is tagged food go to food script
         {
             food eaten = other.gameObject.GetComponent<food>(); // add other things like sfx and other types of food later
+
+            if (eaten != null && eaten.isRotten) // ate rotten food = bad ending
+            {
+                ShowBadEnding();
+            }
+
             Destroy(other.gameObject);
         }
+    }
+
+    void ShowBadEnding()
+    {
+        badEndingScreen.SetActive(true); // turns on the ending screen and its buttons
+        Time.timeScale = 0f; // pauses the game so doggy stops moving
     }
 }
