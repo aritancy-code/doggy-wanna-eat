@@ -8,6 +8,9 @@ public class craving
 {
     public Sprite foodSprite;
     public int amount = 1;
+
+    [System.NonSerialized] public int left;        // how many doggy still needs (counts down while playing)
+    [System.NonSerialized] public TMP_Text label;  // the "Xnumber" text for this row
 }
 
 // At the start of the level:
@@ -40,7 +43,10 @@ public class thoughtbubble : MonoBehaviour
         {
             GameObject row = Instantiate(rowPrefab, bigBubble.transform);
             row.GetComponentInChildren<Image>().sprite = c.foodSprite;
-            row.GetComponentInChildren<TMP_Text>().text = "x" + c.amount;
+
+            c.left = c.amount;                               // start the countdown at the full amount
+            c.label = row.GetComponentInChildren<TMP_Text>(); // remember this row's text so we can update it
+            c.label.text = "x" + c.left;
         }
 
         // tail animation: hide all the little bubbles, then show them one by one
@@ -56,6 +62,28 @@ public class thoughtbubble : MonoBehaviour
 
         yield return new WaitForSeconds(stepDelay);
         ShowBubble();
+    }
+
+    // called by doggy when it eats fresh food.
+    // counts that food down in the bubble, and says true when doggy has eaten everything it wanted.
+    public bool FoodEaten(food eaten)
+    {
+        foreach (craving c in cravings)
+        {
+            if (c.foodSprite == eaten.freshSprite && c.left > 0) // is this the food doggy wanted?
+            {
+                c.left--;                    // one less needed
+                c.label.text = "x" + c.left; // update the number in the bubble
+                break;
+            }
+        }
+
+        // check if every craving is done
+        foreach (craving c in cravings)
+        {
+            if (c.left > 0) return false; // still wants something
+        }
+        return true; // all done = level complete
     }
 
     void LateUpdate() // runs after doggy moves each frame, so the bubble keeps up

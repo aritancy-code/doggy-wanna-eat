@@ -12,6 +12,8 @@ public class doggy : MonoBehaviour
     private bool isGround;
 
     public GameObject badEndingScreen; // drag the rottenend panel here
+    public GameObject levelCompleteScreen; // drag the level complete panel here
+    public thoughtbubble bubble; // drag the thoughtbubble here so doggy can tell it what was eaten
 
     //Update called once per frame
     void Update()
@@ -73,6 +75,10 @@ public class doggy : MonoBehaviour
             {
                 ShowBadEnding();
             }
+            else if (eaten != null && bubble.FoodEaten(eaten)) // ate fresh food, and that was the last thing doggy wanted
+            {
+                ShowLevelComplete();
+            }
 
             Destroy(other.gameObject);
         }
@@ -81,6 +87,12 @@ public class doggy : MonoBehaviour
     void ShowBadEnding()
     {
         badEndingScreen.SetActive(true); // turns on the ending screen and its buttons
+        Time.timeScale = 0f; // pauses the game so doggy stops moving
+    }
+
+    void ShowLevelComplete()
+    {
+        levelCompleteScreen.SetActive(true); // turns on the level complete screen
         Time.timeScale = 0f; // pauses the game so doggy stops moving
     }
 }
