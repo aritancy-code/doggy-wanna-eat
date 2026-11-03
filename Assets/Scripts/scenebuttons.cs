@@ -12,7 +12,7 @@ public class scenebuttons : MonoBehaviour
         Time.timeScale = 1f; // unpause, the ending screens pause the game
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-
+    // if theres no next level it'll play TUTORIAL
     public void NextLevel() // go to the next level in the Scene List
     {
         Time.timeScale = 1f;
