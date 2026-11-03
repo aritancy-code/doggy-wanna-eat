@@ -662,7 +662,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 174110708}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 306643740}
+        m_TargetAssemblyTypeName: scenebuttons, Assembly-CSharp
+        m_MethodName: Home
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &174110708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -726,11 +738,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1043723696358910769, guid: 7012b940d10f68a43b37ea8c7f19f1e4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.44
+      value: -3.33
       objectReference: {fileID: 0}
     - target: {fileID: 1043723696358910769, guid: 7012b940d10f68a43b37ea8c7f19f1e4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.8589208
+      value: -3.54
       objectReference: {fileID: 0}
     - target: {fileID: 1043723696358910769, guid: 7012b940d10f68a43b37ea8c7f19f1e4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -764,10 +776,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: clockImage
-      value: 
-      objectReference: {fileID: 440383151}
+    - target: {fileID: 3610138749332089967, guid: 7012b940d10f68a43b37ea8c7f19f1e4, type: 3}
+      propertyPath: freshTime
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 5811244859935731139, guid: 7012b940d10f68a43b37ea8c7f19f1e4, type: 3}
       propertyPath: m_Name
       value: apple_0 (1)
@@ -789,6 +801,7 @@ GameObject:
   - component: {fileID: 306643738}
   - component: {fileID: 306643737}
   - component: {fileID: 306643736}
+  - component: {fileID: 306643740}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -882,6 +895,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &306643740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306643735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a4295489fffb545b69554d4150f2e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::scenebuttons
+  homeSceneName: TUTORIAL
 --- !u!1 &404389507
 GameObject:
   m_ObjectHideFlags: 0
@@ -957,17 +983,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 404389507}
   m_CullTransparentMesh: 1
---- !u!114 &440383151 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1350291833031356893, guid: 7012b940d10f68a43b37ea8c7f19f1e4, type: 3}
-  m_PrefabInstance: {fileID: 2607623984670910947}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1275,6 +1290,8 @@ MonoBehaviour:
   stepDelay: 0.4
   head: {fileID: 1783350986}
   offset: {x: 3.7826056, y: 0.84867465, z: 90}
+  toggleKey: 120
+  hintText: {fileID: 0}
 --- !u!1 &1021051900
 GameObject:
   m_ObjectHideFlags: 0
@@ -1408,7 +1425,7 @@ Transform:
   m_GameObject: {fileID: 1021051900}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.23, y: -3.05, z: 0}
+  m_LocalPosition: {x: -6.66, y: -1.11, z: 0}
   m_LocalScale: {x: 0.5, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1501,7 +1518,7 @@ Transform:
   m_GameObject: {fileID: 1181582067}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.1, y: -2.558, z: 0}
+  m_LocalPosition: {x: -2.74, y: -4.41, z: 0}
   m_LocalScale: {x: 0.8, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1635,7 +1652,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1270329087}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 306643740}
+        m_TargetAssemblyTypeName: scenebuttons, Assembly-CSharp
+        m_MethodName: Replay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1270329087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1863,7 +1892,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1347633652}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 306643740}
+        m_TargetAssemblyTypeName: scenebuttons, Assembly-CSharp
+        m_MethodName: Home
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1347633652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2109,7 +2150,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1787804946}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 306643740}
+        m_TargetAssemblyTypeName: scenebuttons, Assembly-CSharp
+        m_MethodName: NextLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1787804946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2281,7 +2334,7 @@ Transform:
   m_GameObject: {fileID: 1838861011}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.91, y: -2.5639, z: 0}
+  m_LocalPosition: {x: 1.89, y: -3.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2374,11 +2427,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1043723696358910769, guid: 7012b940d10f68a43b37ea8c7f19f1e4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4
+      value: 1.86
       objectReference: {fileID: 0}
     - target: {fileID: 1043723696358910769, guid: 7012b940d10f68a43b37ea8c7f19f1e4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.829
+      value: -2.27
       objectReference: {fileID: 0}
     - target: {fileID: 1043723696358910769, guid: 7012b940d10f68a43b37ea8c7f19f1e4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2411,6 +2464,10 @@ PrefabInstance:
     - target: {fileID: 1043723696358910769, guid: 7012b940d10f68a43b37ea8c7f19f1e4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3610138749332089967, guid: 7012b940d10f68a43b37ea8c7f19f1e4, type: 3}
+      propertyPath: freshTime
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5811244859935731139, guid: 7012b940d10f68a43b37ea8c7f19f1e4, type: 3}
       propertyPath: m_Name

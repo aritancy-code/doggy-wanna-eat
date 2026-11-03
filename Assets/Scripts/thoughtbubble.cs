@@ -32,11 +32,19 @@ public class thoughtbubble : MonoBehaviour
     public Transform head;             // the marker on doggy's head
     public Vector3 offset;             // how far the bubble sits a fixed distance from the marker
 
+    [Header("Open/close cravings")]
+    public KeyCode toggleKey = KeyCode.X; // key that opens/closes the bubble
+    public GameObject hintText;           // tutorial text like "press X to open/close cravings" (leave empty on other levels)
+
+    private bool introDone; // true once the tail + big bubble have finished appearing
+    private bool isOpen;    // is the bubble showing right now
+
     IEnumerator Start() // start can wait between steps when it's an IEnumerator
     {
         FollowHead(); // jump to doggy straight away
 
         bigBubble.SetActive(false); // hidden until the tail finishes
+        if (hintText != null) hintText.SetActive(false); // hint waits until the bubble appears
 
         // build the rows now, while the bubble is hidden
         foreach (craving c in cravings)
@@ -62,6 +70,31 @@ public class thoughtbubble : MonoBehaviour
 
         yield return new WaitForSeconds(stepDelay);
         ShowBubble();
+
+        isOpen = true;
+        introDone = true; // now the player is allowed to open/close it
+        if (hintText != null) hintText.SetActive(true); // show the tutorial hint
+    }
+
+    void Update()
+    {
+        if (!introDone) return;           // don't toggle while the intro is still playing
+        if (Time.timeScale == 0f) return; // don't toggle on the ending screens (game is paused)
+
+        if (Input.GetKeyDown(toggleKey))
+        {
+            SetOpen(!isOpen); // flip: open -> closed, closed -> open
+        }
+    }
+
+    void SetOpen(bool open) // shows or hides the bubble tails and the big bubble together
+    {
+        isOpen = open;
+        bigBubble.SetActive(open);
+        foreach (GameObject bubble in tailBubbles)
+        {
+            bubble.SetActive(open);
+        }
     }
 
     // called by doggy when it eats fresh food.
@@ -86,7 +119,7 @@ public class thoughtbubble : MonoBehaviour
         return true; // all done = level complete
     }
 
-    void LateUpdate() // runs after doggy moves each frame, so the bubble keeps up
+    void LateUpdate() // runs after doggy moves each frame, so the bubble follows
     {
         FollowHead();
     }
@@ -102,8 +135,8 @@ public class thoughtbubble : MonoBehaviour
         bigBubble.SetActive(true);
     }
 
-    // right-click the thoughtbubble component's title in the Inspector and pick this.
-    // remembers where the bubble is right now compared to doggy's head.
+    // right-click the thoughtbubble component's title in the Inspector and pick this
+    // remembers where the bubble is right now relative to doggy's head
     [ContextMenu("Save current position as offset")]
     void SaveOffset()
     {
