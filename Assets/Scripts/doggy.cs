@@ -7,6 +7,7 @@ public class doggy : MonoBehaviour
     public float direction;    // moving left/right
     public SpriteRenderer doggyRederer;    // ref to SpriteRenderer so that itll flip it along x
     public float jumpForce;
+    public float maxFallSpeed = 10f; // fastest doggy can fall, so he doesn't zip through platforms after wrapping
 
     public LayerMask groundLayer; // lets us label things as ground. we want doggy only to jump when in contact with ground
     private bool isGround;
@@ -14,6 +15,13 @@ public class doggy : MonoBehaviour
     public GameObject badEndingScreen; // drag the rottenend panel here
     public GameObject levelCompleteScreen; // drag the level complete panel here
     public thoughtbubble bubble; // drag the thoughtbubble here so doggy can tell it what was eaten
+
+    private Camera cam; // the camera, so we know where the edges of the screen are
+
+    void Start()
+    {
+        cam = Camera.main; // finds the camera tagged "MainCamera"
+    }
 
     //Update called once per frame
     void Update()
@@ -62,7 +70,34 @@ public class doggy : MonoBehaviour
     void FixedUpdate() // doesnt needd to be private actually
     {
         //put player movement here because we only want player to move at one speed only always
-        dogRB.linearVelocity = new Vector2(direction * speed, dogRB.linearVelocity.y);
+        float fallSpeed = Mathf.Max(dogRB.linearVelocity.y, -maxFallSpeed); // falling is negative y, so don't let it go below -maxFallSpeed
+        dogRB.linearVelocity = new Vector2(direction * speed, fallSpeed);
+
+        ScreenWrap(); // if doggy left the screen, bring him back on the other side
+    }
+
+    /* doggy can get to other side of the world by falling thru it*/
+    void ScreenWrap()
+    {
+        // work out where the screen edges are in the game world
+        float halfHeight = cam.orthographicSize;     // half the screen height
+        float halfWidth = halfHeight * cam.aspect;   // half the screen width (depends on screen shape)
+        Vector2 camPos = cam.transform.position;
+        Vector2 doggySize = doggyRederer.bounds.extents; // half of doggy's size, so he's fully off screen before wrapping
+
+        float left = camPos.x - halfWidth - doggySize.x;
+        float right = camPos.x + halfWidth + doggySize.x;
+        float bottom = camPos.y - halfHeight - doggySize.y;
+        float top = camPos.y + halfHeight + doggySize.y;
+
+        Vector2 pos = dogRB.position;
+
+        if (pos.x > right) pos.x = left;        // went off the right -> come in from the left
+        else if (pos.x < left) pos.x = right;   // went off the left -> come in from the right
+
+        if (pos.y < bottom) pos.y = top;        // fell off the bottom -> drop in from the top, same x
+
+        dogRB.position = pos;
     }
 
     void OnTriggerEnter2D(Collider2D other)

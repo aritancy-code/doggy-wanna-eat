@@ -482,6 +482,7 @@ MonoBehaviour:
   direction: 0
   doggyRederer: {fileID: 128918898}
   jumpForce: 3
+  maxFallSpeed: 10
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -2467,7 +2468,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3610138749332089967, guid: 7012b940d10f68a43b37ea8c7f19f1e4, type: 3}
       propertyPath: freshTime
-      value: 5
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5811244859935731139, guid: 7012b940d10f68a43b37ea8c7f19f1e4, type: 3}
       propertyPath: m_Name
