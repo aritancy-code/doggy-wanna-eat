@@ -16,7 +16,7 @@ public class doggy : MonoBehaviour
     public GameObject levelCompleteScreen; // drag the level complete panel here
     public thoughtbubble bubble; // drag the thoughtbubble here so doggy can tell it what was eaten
 
-    private Camera cam; // the camera, so we know where the edges of the screen are
+    private Camera cam; // the camera, to keep track of screenedges for warping doggy feature
 
     void Start()
     {
