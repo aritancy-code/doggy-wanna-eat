@@ -1828,7 +1828,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4009120750202814280, guid: 404abaafddc772a46a7c9cb7ad1abf42, type: 3}
       propertyPath: cravings.Array.data[0].amount
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8526676174435801854, guid: 404abaafddc772a46a7c9cb7ad1abf42, type: 3}
       propertyPath: m_Pivot.x

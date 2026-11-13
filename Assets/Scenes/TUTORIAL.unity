@@ -153,7 +153,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 245, y: -213}
+  m_AnchoredPosition: {x: 215, y: -200}
   m_SizeDelta: {x: 398.05, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &9520247
@@ -203,8 +203,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1008,8 +1008,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 23
+  m_fontSizeBase: 23
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1250,7 +1250,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 373, y: -132}
+  m_AnchoredPosition: {x: 373, y: -69}
   m_SizeDelta: {x: 398.05, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1146961892
@@ -1300,8 +1300,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 23
+  m_fontSizeBase: 23
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2382,6 +2382,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 306643739}
     m_Modifications:
+    - target: {fileID: 2093499882050906829, guid: 404abaafddc772a46a7c9cb7ad1abf42, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 249.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 2093499882050906829, guid: 404abaafddc772a46a7c9cb7ad1abf42, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -167
+      objectReference: {fileID: 0}
+    - target: {fileID: 2093499882050906829, guid: 404abaafddc772a46a7c9cb7ad1abf42, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 95
+      objectReference: {fileID: 0}
     - target: {fileID: 2258701577294234298, guid: 404abaafddc772a46a7c9cb7ad1abf42, type: 3}
       propertyPath: m_Name
       value: thoughtbubble
@@ -2390,6 +2402,14 @@ PrefabInstance:
       propertyPath: head
       value: 
       objectReference: {fileID: 1783350986}
+    - target: {fileID: 5616602372088173672, guid: 404abaafddc772a46a7c9cb7ad1abf42, type: 3}
+      propertyPath: m_fontSize
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 5616602372088173672, guid: 404abaafddc772a46a7c9cb7ad1abf42, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 23
+      objectReference: {fileID: 0}
     - target: {fileID: 8526676174435801854, guid: 404abaafddc772a46a7c9cb7ad1abf42, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

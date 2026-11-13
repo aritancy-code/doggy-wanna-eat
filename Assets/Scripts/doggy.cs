@@ -16,11 +16,12 @@ public class doggy : MonoBehaviour
     public GameObject levelCompleteScreen; // drag the level complete panel here
     public thoughtbubble bubble; // drag the thoughtbubble here so doggy can tell it what was eaten
 
-    private Camera cam; // the camera, to keep track of screenedges for warping doggy feature
+    private Camera cam; // the camera, so we know where the edges of the screen are
 
     void Start()
     {
         cam = Camera.main; // finds the camera tagged "MainCamera"
+        if (bubble == null) bubble = FindAnyObjectByType<thoughtbubble>(); // no bubble dragged in? find it in the level automatically
     }
 
     //Update called once per frame
@@ -76,7 +77,6 @@ public class doggy : MonoBehaviour
         ScreenWrap(); // if doggy left the screen, bring him back on the other side
     }
 
-    /* doggy can get to other side of the world by falling thru it*/
     void ScreenWrap()
     {
         // work out where the screen edges are in the game world
@@ -110,7 +110,7 @@ public class doggy : MonoBehaviour
             {
                 ShowBadEnding();
             }
-            else if (eaten != null && bubble.FoodEaten(eaten)) // ate fresh food, and that was the last thing doggy wanted
+            else if (eaten != null && bubble != null && bubble.FoodEaten(eaten)) // ate fresh food, and that was the last thing doggy wanted
             {
                 ShowLevelComplete();
             }
